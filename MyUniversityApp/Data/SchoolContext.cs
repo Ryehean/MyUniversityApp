@@ -26,5 +26,7 @@ namespace MyUniversityApp.Data
             modelBuilder.Entity<Student>().ToTable("Student");
 
         }
+
+        public DbSet<MyUniversityApp.Models.StudentVM> StudentVM { get; set; }
     }
 }
