@@ -27,6 +27,6 @@ namespace MyUniversityApp.Data
 
         }
 
-        public DbSet<MyUniversityApp.Models.StudentVM> StudentVM { get; set; }
+        //public DbSet<MyUniversityApp.Models.StudentVM> StudentVM { get; set; }
     }
 }
