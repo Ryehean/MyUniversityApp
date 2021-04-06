@@ -38,6 +38,6 @@ namespace MyUniversityApp.Models
         }
 
         public ICollection<Course> Courses { get; set; }
-        public OfficeAssignment officeAssignmnet { get; set; }
+        public OfficeAssignment OfficeAssignmnet { get; set; }
     }
 }

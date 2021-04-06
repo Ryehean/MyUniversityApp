@@ -30,7 +30,7 @@ namespace MyUniversityApp.Pages.Instructors
         {
             InstructorData = new InstructorIndexData();
             InstructorData.Instructors = await _context.Instructors
-                .Include(i => i.officeAssignmnet)
+                .Include(i => i.OfficeAssignmnet)
                 .Include(i => i.Courses)
                     .ThenInclude(c => c.Department)
                 .OrderBy(i => i.LastName)

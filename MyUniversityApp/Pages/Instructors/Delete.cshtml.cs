@@ -45,14 +45,23 @@ namespace MyUniversityApp.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructors.FindAsync(id);
+            Instructor = await _context.Instructors
+                .Include(i => i.Courses)
+                .SingleAsync(i => i.ID == id);
 
-            if (Instructor != null)
+            if (Instructor == null)
             {
-                _context.Instructors.Remove(Instructor);
-                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
+            var departments = await _context.Departments
+                .Where(d => d.InstructorID == id)
+                .ToListAsync();
+            departments.ForEach(d => d.InstructorID = null);
+
+            _context.Instructors.Remove(Instructor);
+
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
     }

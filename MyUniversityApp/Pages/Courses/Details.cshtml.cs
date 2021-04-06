@@ -29,7 +29,9 @@ namespace MyUniversityApp.Pages.Courses
             }
 
             Course = await _context.Courses
-                .Include(c => c.Department).FirstOrDefaultAsync(m => m.CourseID == id);
+                .Include(c => c.Department)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.CourseID == id);
 
             if (Course == null)
             {
